@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Survey</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Josefin+Sans:wght@300&family=Martian+Mono&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles/style.css">
+    <body>
+        <div class="survey">
+            <h1>We need your feedback</h1>
+            <h3 class = "question"></h3>
+            <p id="top_info_text"></p>
+            <div id="body_top" >
+                <form class="smily" action="/" method="post" onsubmit="submitForm()">
+                    <input id="question_val" type="hidden" name="question"/>
+                    <button class="top_emoji" name="feedback" type="submit" value="1" ><img src="images/frowning.png" alt="emoji-frowning"></button>
+                    <button class="top_emoji" name="feedback" type="submit" value="2" ><img src="images/expression-less.png" alt="emoji-expressionless"></button>
+                    <button class="top_emoji" name="feedback" type="submit" value="3" ><img src="images/slightly-smiling.png" alt="emoji-slightly-smiling"></button>
+                    <button class="top_emoji" name="feedback" type="submit" value="4" ><img src="images/thumbs-up.png" alt="emoji-thumbs-up"></button>
+                </form>
+                <ul class="top_emoji">
+                    <li id="one">Bad</li>
+                    <li id="two">Average</li>
+                    <li id="three">Good</li>
+                    <li id="four">Excellent</li>
+                </ul>
+            </div>
+ 
+        </div>
+
+       <script src="/scripts/app.js" charset="utf-8"> </script>
+    </body>
+</html>

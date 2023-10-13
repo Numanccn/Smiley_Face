@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Josefin+Sans:wght@300&family=Martian+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <title>Chart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/chart.css">
+    </head>
+    <body>
+    <!-- Question scheduling -->
+      <h1>Scheduler</h1>
+      <div class="header">
+        <select id="questionSelect">
+          <option class="maiden" value="">Select a question...</option>
+        </select>
+        <input type="datetime-local" id="datetimePicker">
+        <button onclick="scheduleQuestion()">Schedule</button>
+      </div>
+
+    <!-- Scheduled question lists and detelte question -->
+    <!-- Dropdown to select a scheduled question for deletion -->
+      <select id="scheduledQuestionSelect">
+        <option class="delete" value="">Select a question...</option>
+      </select>
+      <!-- Button to delete a scheduled question -->
+      <button id="deleteButton">Delete</button>
+
+  
+    <!-- Smily feedback result in parentage -->
+      <div class="container">
+      <h3 class = "question_summary">Summary</h3>
+      <ul class="smily_and_value">
+        <li class="emoji"><img src="/images/frowning.png" alt="emoji-frowning"></li>
+        <li class="emoji"><img src="/images/expression-less.png" alt="emoji-expressionless"></li>
+        <li class="emoji"><img src="/images/slightly-smiling.png" alt="emoji-slightly-smiling"></li>
+        <li class="emoji"><img src="/images/thumbs-up.png" alt="emoji-thumbs-up"></li>
+      </ul>
+      <ul class="smily_and_value">
+        <li class="counter-element"></li>
+        <li class="counter-element"></li>
+        <li class="counter-element"></li>
+        <li class="counter-element"></li>
+      </ul>
+      <h3 class="response_counter"></h3>
+      </div>
+        <div id="questionContainer">
+          <h3 class="scheduled-question"></h3>
+        </div>
+        <!-- Time series data-->
+        <div id="chart_time_series"> </div>
+        <!--Stacked bar Option -->
+        <label for="questionSelector">Plot data for</label>
+        <select id="questionSelector">
+          <option class="maiden" value="">Select a question...</option>
+        </select>
+        <!-- Stacked bar chart -->
+       
+        <canvas id="stackedBarChart"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+        <script src="/scripts/app.js" charset="utf-8"> </script>
+        </body>
+</html>

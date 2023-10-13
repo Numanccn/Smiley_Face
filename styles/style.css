@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #203647;
+    font-family: 'Roboto Mono', monospace;
+
+
+}
+
+div.survey {
+    background-color: #A3BCB6;
+    height: 300px;
+    max-width: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 1rem;
+    opacity: 850%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
+}
+
+div.feedback {
+    background-color: #A3BCB6;
+    height: 300px;
+    max-width: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 1rem;
+    opacity: 850%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
+
+}
+
+h1 {
+    display: inline-block;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+
+    
+}
+
+.question {
+    margin-top: 2 rem;
+    color: black;
+}
+
+
+.smily {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+     
+}
+
+button {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+img {
+    width: 40px;
+    padding: 0;
+}
+
+img:hover {
+    opacity: 70%;
+ }
+
+img:active { 
+    transform: scale(0.98);
+    text-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24); 
+    transform: translateY(4px);
+  
+}
+
+ul.top_emoji {
+    display: flex;
+    justify-content:space-between ;
+
+}
+
+li {
+    list-style: none;
+    line-height: 0.1rem;
+    color: #203647;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+li#four {
+    margin-right: 2.5rem;
+}
+
+li#three {
+    margin-left: 0rem;
+}
+
+li#two {
+    margin-left: 0.4rem;
+}
+
+li#one {
+    margin-left: 2rem;
+}
+
+#note {
+    display: inline-block;
+    margin: 5rem;
+    line-height: 3.5rem;
+    font: 1.5rem;
+}

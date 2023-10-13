@@ -1,0 +1,29 @@
+{
+  "name": "smily-face-survey",
+  "version": "1.0.1",
+  "description": "A survey web application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Yunus Ali Muhammad Numan",
+  "license": "ISC",
+  "dependencies": {
+    "address": "^1.1.2",
+    "apexcharts": "^3.27.2",
+    "arp": "0.0.3",
+    "arped": "^0.2.0",
+    "body-parser": "^1.19.0",
+    "chart.js": "^3.2.1",
+    "cheerio": "^1.0.0-rc.9",
+    "ejs": "^3.1.9",
+    "express": "^4.17.1",
+    "fusioncharts": "^3.17.0",
+    "jsdom": "^16.6.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "node-schedule": "^2.1.1",
+    "pug": "^3.0.2"
+  }
+}

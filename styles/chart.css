@@ -1,0 +1,184 @@
+/* Style for the container holding the elements */
+.container {
+  text-align: center;
+  padding:  10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style for the heading */
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style for the select dropdown */
+#questionSelect {
+  padding: 8px;
+  border: 1px solid #4cd691;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+#scheduledQuestionsSelect {
+  padding: 8px;
+  border: 1px solid #4cd691;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.maiden {
+  background-color: #b95cbd;
+}
+
+/* Style for scheduled question list */
+
+#scheduledQuestionSelect {  padding: 8px;
+  border: 1px solid #4cd691;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40%;
+  margin-bottom: 10px;
+
+}
+
+.delete {
+  background-color: #e2572d;
+}
+
+
+/* Style for the date and time picker */
+#datetimePicker {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+/* Style for the schedule button */
+button {
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 15%;
+  margin-bottom: 10px;
+  background-color: #4cd691;
+}
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Smily face parcentage */
+div.container {
+  background-color: darkgray;
+  height: 250px;
+  max-width: 500px;
+  position:relative;
+  top: 2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 0.1rem;
+  opacity: 850%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
+  text-align: center;
+}
+
+.question_summary {
+  padding: 1.5rem;
+}
+
+.smily_and_value {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+  margin-top: 0.5rem;     
+}
+
+img {
+  width: 40px;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  line-height: 0.1rem;
+  color: #203647;
+  font-size: 0.9rem;
+}
+.counter-element {
+
+  justify-content: space-between;
+  margin-left: 0.8rem;
+
+}
+
+.response_counter {
+  padding: 1.5rem;
+}
+
+
+
+/* Time series*/
+
+#chart_time_series {
+  margin-bottom: 5rem;
+  margin-top: 8rem;
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 1rem;
+  
+}
+
+/* Stacked bar */
+#questionSelector {
+  padding: 8px;
+  border: 1px solid #4cd691;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+#stackedBarChart {
+  height: calc(05vh);
+  width: calc(80vw);
+  margin-top: 5rem;
+  margin-bottom: 4rem;
+  background-color: whitesmoke;
+  border: 1px solid #ccc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 0.5rem;
+}
+
+
+body {
+
+  max-width: 80%;
+  margin: auto;
+  background-color: #EFDBAA;
+  font-family: 'Martian Mono', monospace;
+}
