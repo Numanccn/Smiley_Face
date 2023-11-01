@@ -89,6 +89,8 @@ fetch(chartDataUrl)
       option.value = question;
       questionSelector.appendChild(option);
     });
+
+    // Attach event listener to the drop-down menu
     questionSelector.addEventListener('change', function () {
       const selectedQuestion = this.value;
       if (selectedQuestion) {
@@ -151,12 +153,14 @@ function generateChart(data, selectedQuestions) {
       },
     },
   };
+
   const ctx = document.getElementById('stackedBarChart').getContext('2d');
   if (chart) {
     chart.destroy();
-  }S
+  }
   chart = new Chart(ctx, chartConfig);
 }
+
 fetch('/questions')
 .then((response) => response.json())
 .then((data) => {
@@ -168,6 +172,7 @@ fetch('/questions')
     questionSelect.appendChild(option);
   });
 });
+
 function scheduleQuestion() {
 const selectedQuestion = document.getElementById('questionSelect').value;
 const selectedDateTime = document.getElementById('datetimePicker').value;
@@ -193,6 +198,8 @@ const selectedDateTime = document.getElementById('datetimePicker').value;
       });
   }
 }
+
+
 function updateQuestion(questions) {
   const scheduledQuestionElement = document.querySelector('.question');
   const currentTime = new Date().getTime();
@@ -232,6 +239,7 @@ function updateQuestion(questions) {
     };
   }
 }
+
 setInterval(() => {
   fetch('/scheduled-question')
     .then((response) => response.json())
@@ -241,7 +249,7 @@ setInterval(() => {
       }
     })
     .catch((error) => {
-      //console.error('Error fetching scheduled questions:', error);
+      console.error('Error fetching scheduled questions:', error);
     });
 }, 10);
 
@@ -289,11 +297,12 @@ function deleteScheduledQuestion() {
       });
   }
 }
+
 // Attach the deleteScheduledQuestion function to a button click event
 const deleteButton = document.getElementById('deleteButton');
 deleteButton.addEventListener('click', deleteScheduledQuestion);
 function submitForm() {
   setTimeout(function() {
     location.reload();
-  }, 10000);
+  }, 2000);
 }
