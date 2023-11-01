@@ -12,7 +12,7 @@ const { JSDOM } = jsdom;
 const util = require('util');
 const { prependListener } = require("process");
 
-/// Additional packages /////
+// Additional packages /////
 const http = require('http').createServer(app);
 const WebSocket = require('ws');
 const port = 3000;
@@ -35,7 +35,6 @@ var con = mysql.createConnection({
     database: "db_hospital",
     multipleStatements: true,
 });
-
 con.connect(function (error) {
     if (error) {
       console.log('Error connecting to MySQL:', error);
@@ -45,20 +44,21 @@ con.connect(function (error) {
 });
 const query = util.promisify(con.query).bind(con)
 
-// Client get request
+// Client get request from front end to back end
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/index.html");
 });
 
 // Post request from client to the server
 app.post("/", function(req, res){
-    var user_rating = (req.body.feedback);
-    var question = (req.body.question)
-    var datetime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-    var mac_add = address.mac(function (err, addr) {
+  var user_rating = (req.body.feedback);
+  var question = (req.body.question)
+  var datetime = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+  var mac_add = address.mac(function (err, addr) {
         return(addr);
     });
     var sql = mysql.format("SELECT * FROM tbl_mac WHERE mac_address=?", [mac_add]);
+
     con.query(sql, function(err, result){
 
         var id_for_mac = 0;
@@ -129,12 +129,13 @@ app.get('/questions', function (req, res) {
         res.json(questions);
       }
     });
-  });
+});
 
-/// Question scheduling
+// Question scheduling ////
 const connection = mysql.createConnection(con);
 let scheduledQuestionData = [];
 app.use(bodyParser.json());
+
 app.get('/questions', (req, res) => {
   const query = 'SELECT question FROM tbl_survey';
   connection.query(query, function (error, results) {
@@ -149,23 +150,24 @@ app.get('/questions', (req, res) => {
     }
   });
 });
+
 app.get('/scheduled-question', (req, res) => {
   res.json(scheduledQuestionData);
 });
+
 app.post('/schedule-question', (req, res) => {
   const { question, dateTime } = req.body;
   const selectedDateTime = new Date(dateTime);
   const currentTime = new Date();
   if (selectedDateTime > currentTime) {
     const job = schedule.scheduleJob(selectedDateTime, function () {
-      console.log(`Scheduled question: ${question}`);
+      //console.log(`Scheduled question: ${question}`);
     });
     const newScheduledQuestion = { question, dateTime, nextInvocation: job.nextInvocation() };
-    console.log('Scheduled questions:', newScheduledQuestion);
+    //console.log('Scheduled questions:', newScheduledQuestion);
     let insertIndex = scheduledQuestionData.findIndex(
       (data) => new Date(data.dateTime).getTime() > selectedDateTime.getTime()
     );
-
     if (insertIndex === -1) {
       insertIndex = scheduledQuestionData.length;
     }
@@ -177,7 +179,7 @@ app.post('/schedule-question', (req, res) => {
   }
 });
 
-// Endpoint for scheduled question
+// Add an endpoint to delete a scheduled question
 app.post('/delete-scheduled-question', (req, res) => {
   const { dateTime } = req.body;
   const deleteIndex = scheduledQuestionData.findIndex((data) => data.dateTime === dateTime);
@@ -189,63 +191,9 @@ app.post('/delete-scheduled-question', (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Fetching data for time Series chart
-
 app.get('/fetchTimeSeriesData', async (req, res) =>{
     try {
-        //Get All Questions:
         const questionData = await query("select * from tbl_survey")
         var questionIDs = []
         for(let i = 0; i<questionData.length; i++){
@@ -317,7 +265,6 @@ var preProcessing = {}
     return res.json({fetchedData, lebel})
 })
 
-
 //fetching the total number of rows
 app.get('/totalRows', (req, res) => {
     // Retrieve the total number of rows from the tbl_survey_data table
@@ -333,10 +280,9 @@ app.get('/totalRows', (req, res) => {
       // Send the total number of rows as the response
       res.json({ totalRows });
     });
-  });
+});
 
-
-/// Fetching percentage value for all data
+//Fetching percentage value for all data
 app.get('/ratings', (req, res) => {
     const query = `
       SELECT user_rating, COUNT(*) * 100 / (SELECT COUNT(*) FROM tbl_survey_data WHERE user_rating BETWEEN 1 AND 5) AS percentage
@@ -357,8 +303,8 @@ app.get('/ratings', (req, res) => {
         res.json(ratingsWithPercentage);
       }
     });
-  });
-///////////////////////////////////////////////////// Stacked Bar Chart ///////////////////////////////////////////////////////
+});
+//Stacked Bar Chart
 app.get('/data', (req, res) => {
   con.query('SELECT question, user_rating FROM tbl_survey_data', (err, rows) => {
     if (err) {
@@ -366,9 +312,8 @@ app.get('/data', (req, res) => {
       res.status(500).send('Error retrieving data');
       return;
     }
-
     const data = {};
-    const uniqueQuestions = new Set(); // Keep track of unique questions
+    const uniqueQuestions = new Set();
 
     rows.forEach((row) => {
       const question = row.question;
@@ -376,7 +321,7 @@ app.get('/data', (req, res) => {
 
       if (!data[question]) {
         data[question] = { total: 0, ratings: {} };
-        uniqueQuestions.add(question); // Add the question to the Set
+        uniqueQuestions.add(question);
       }
 
       data[question].total++;
@@ -398,4 +343,3 @@ app.get('/data', (req, res) => {
     res.json(data);
   });
 });
-
